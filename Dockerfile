@@ -7,9 +7,10 @@ ADD . /usr/src/app
 WORKDIR /usr/src/app
 # 基础镜像已经包含pip组件
 # move database.db to /mnt
-RUN git clone https://github.com/binux/qiandao.git qiandao \
-    && rm -rf qiandao/.git \
-    && mv qiandao/* . \
+RUN wget https://github.com/binux/qiandao/archive/master.zip \
+    && unzip master.zip \
+    && mv qiandao-master/* . \
+    && rm -rf qiandao-master \
     && sed -i "s/\.\/database\.db/\/mnt\/database.db/" config.py \
     && apk update \
     && apk add bash autoconf g++ \
