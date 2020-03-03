@@ -10,7 +10,7 @@ WORKDIR /usr/src/app
 RUN git clone https://github.com/binux/qiandao.git qiandao \
     && rm -rf qiandao/.git \
     && mv qiandao/* . \
-    && sed -i "s/\.\/database\.db/\/mnt\/database.db/" config.py
+    && sed -i "s/\.\/database\.db/\/mnt\/database.db/" config.py \
     && apk update \
     && apk add bash autoconf g++ \
     && pip install --no-cache-dir -r requirements.txt
